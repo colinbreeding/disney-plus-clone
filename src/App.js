@@ -1,9 +1,16 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
 import "./App.css";
+import { Fragment } from "react";
 
 function App() {
   return (
     <div className="App">
-      <h2>Hello lets build Disney Plus Clone!</h2>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Login />}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
