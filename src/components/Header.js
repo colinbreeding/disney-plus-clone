@@ -73,7 +73,7 @@ const Header = (props) => {
           </NavMenu>
           <UserImg
             src={userPhoto}
-            referrerpolicy="no-referrer"
+            referrerPolicy="no-referrer"
             alt={userName}
           />
         </>
