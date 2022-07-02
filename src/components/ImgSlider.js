@@ -65,10 +65,10 @@ const Carousel = styled(Slider)`
     overflow: initial;
   }
   .slick-prev {
-    left: -75px;
+    left: -100px;
   }
   .slick-next {
-    right: -75px;
+    right: -100px;
   }
 `;
 
