@@ -38,15 +38,15 @@ const Home = (props) => {
             trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
         }
+        dispatch(
+          setMovies({
+            recommend: recommend,
+            newDisney: newDisney,
+            original: original,
+            trending: trending,
+          })
+        );
       });
-      dispatch(
-        setMovies({
-          recommend: recommend,
-          newDisney: newDisney,
-          original: original,
-          trending: trending,
-        })
-      );
     });
   }, [userName]);
 
@@ -69,15 +69,8 @@ const Container = styled.main`
   display: block;
   top: 72px;
   padding: 0 calc(3.5vw + 5px);
-
-  &:after {
-    background: url("/images/home-background.png") center center no-repeat fixed;
-    content: "";
-    position: absolute;
-    inset: 0px;
-    opacity: 1;
-    z-index: -1;
-  }
+  background: url("/images/home-background.png") no-repeat center center fixed;
+  background-size: cover;
 `;
 
 export default Home;

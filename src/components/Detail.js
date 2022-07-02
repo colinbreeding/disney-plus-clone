@@ -12,7 +12,6 @@ const Detail = (props) => {
     getDoc(doc(db, "movies", id)).then((doc) => {
       if (doc.exists) {
         setDetailData(doc.data());
-        console.log(doc.data(), doc.id);
       } else {
         console.log("No such document exists");
       }

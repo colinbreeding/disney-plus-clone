@@ -57,11 +57,11 @@ const Header = (props) => {
 
   return (
     <Nav>
-      <Logo>
+      <Logo href="/home">
         <img src="/images/logo.svg" alt="Disney+" />
       </Logo>
       {!userName ? (
-        <Login onClick={handleAuth}>Login</Login>
+        <Login onClick={handleAuth}>Log In</Login>
       ) : (
         <>
           <NavMenu>
@@ -73,7 +73,7 @@ const Header = (props) => {
               <img src="/images/search-icon.svg" alt="search" />
               <span>SEARCH</span>
             </a>
-            <a href="/home">
+            <a href="/watchlist">
               <img src="/images/watchlist-icon.svg" alt="watchlist" />
               <span>WATCHLIST</span>
             </a>
@@ -150,12 +150,15 @@ const NavMenu = styled.div`
     display: flex;
     align-items: center;
     padding: 0 12px;
+    font-weight: bold;
+    margin-right: 20px;
 
     img {
       height: 20px;
       min-width: 20px;
       width: 20px;
       z-index: auto;
+      margin-right: 5px;
     }
 
     span {
@@ -191,8 +194,10 @@ const NavMenu = styled.div`
       }
     }
   }
-  @media (max-width: 768px) {
-    display: none;
+  @media (max-width: 1100px) {
+    &:nth-child(2) {
+      display: none;
+    }
   }
 `;
 
