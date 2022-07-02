@@ -16,12 +16,12 @@ import db from "../firebase";
 const Home = (props) => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
-  let recommend = [];
-  let newDisney = [];
-  let original = [];
-  let trending = [];
 
   useEffect(() => {
+    let recommend = [];
+    let newDisney = [];
+    let original = [];
+    let trending = [];
     getDocs(collection(db, "movies")).then((snapshot) => {
       snapshot.docs.map((doc) => {
         switch (doc.data().type) {
@@ -37,6 +37,7 @@ const Home = (props) => {
           case "trending":
             trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
+          default:
         }
         dispatch(
           setMovies({
