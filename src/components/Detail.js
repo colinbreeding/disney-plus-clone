@@ -1,13 +1,31 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const Detail = (props) => {
+  const { id } = useParams();
+  const [detailData, setDetailData] = useState({});
+
+  useEffect(() => {
+    getDoc(doc(db, "movies", id)).then((doc) => {
+      if (doc.exists) {
+        setDetailData(doc.data());
+        console.log(doc.data(), doc.id);
+      } else {
+        console.log("No such document exists");
+      }
+    });
+  }, [id]);
+
   return (
     <Container>
       <Background>
-        <img src="" alt="" />
+        <img src={detailData.backgroundImg} alt={detailData.title} />
       </Background>
       <ImageTitle>
-        <img src="" alt="" />
+        <img src={detailData.titleImg} alt={detailData.title} />
       </ImageTitle>
       <ContentMeta>
         <Controls>
@@ -29,8 +47,8 @@ const Detail = (props) => {
             </div>
           </GroupWatch>
         </Controls>
-        <SubTitle>SubTitle</SubTitle>
-        <Description>Description</Description>
+        <SubTitle>{detailData.subTitle}</SubTitle>
+        <Description>{detailData.description}</Description>
       </ContentMeta>
     </Container>
   );
