@@ -18,17 +18,16 @@ const Header = (props) => {
   const userPhoto = useSelector(selectUserPhoto);
 
   useEffect(() => {
+    const setUserHelper = () => {
+      auth.onAuthStateChanged(async (user) => {
+        if (user) {
+          setUser(user);
+          navigate("/home");
+        }
+      });
+    };
     setUserHelper();
   }, [userName]);
-
-  const setUserHelper = () => {
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        setUser(user);
-        navigate("/home");
-      }
-    });
-  };
 
   const handleAuth = () => {
     if (!userName) {
