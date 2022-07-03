@@ -72,7 +72,7 @@ const CTA = styled.div`
 `;
 
 const CTALogoOne = styled.img`
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   max-width: 600px;
   min-height: 1px;
   display: block;
@@ -101,7 +101,7 @@ const Description = styled.p`
   margin: 0 0 24px;
   line-height: 1.5;
   letter-spacing: 0.5px;
-  margin-top: 30px;
+  margin-top: 10px;
 
   span {
     &:first-child {
@@ -119,7 +119,7 @@ const CTALogoTwo = styled.img`
   display: inline-block;
   vertical-align: bottom;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 export default Login;

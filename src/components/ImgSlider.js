@@ -11,6 +11,7 @@ const ImgSlider = (props) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    draggable: true,
   };
   return (
     <Carousel {...settings}>
@@ -65,10 +66,10 @@ const Carousel = styled(Slider)`
     overflow: initial;
   }
   .slick-prev {
-    left: -100px;
+    left: -60px;
   }
   .slick-next {
-    right: -100px;
+    right: -60px;
   }
 `;
 
@@ -76,7 +77,7 @@ const Wrap = styled.div`
   border-radius: 4px;
   cursor: pointer;
   position: relative;
-
+  padding: 0 8px 0 8px;
   a {
     border-radius: 4px;
     box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
@@ -84,16 +85,14 @@ const Wrap = styled.div`
     cursor: pointer;
     display: block;
     position: relative;
-    padding: 4px;
-
     img {
       width: 100%;
       height: 100%;
     }
     &:hover {
-      padding: 0;
-      border: 4px solid rgba(249, 249, 249, 0.8);
-      transition-duration: 30ms;
+      border: 4px solid rgba(249, 249, 249, 0.7);
+      transition: all 100ms ease-in-out;
+      margin: -4.1px;
     }
   }
 `;

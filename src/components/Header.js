@@ -18,13 +18,17 @@ const Header = (props) => {
   const userPhoto = useSelector(selectUserPhoto);
 
   useEffect(() => {
+    setUserHelper();
+  }, [userName]);
+
+  const setUserHelper = () => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
         navigate("/home");
       }
     });
-  }, [userName]);
+  };
 
   const handleAuth = () => {
     if (!userName) {
@@ -97,7 +101,7 @@ const Header = (props) => {
               alt={userName}
             />
             <DropDown>
-              <span onClick={handleAuth}>Sign Out</span>
+              <span onClick={handleAuth}>SIGN OUT</span>
             </DropDown>
           </SignOut>
         </>
@@ -247,6 +251,10 @@ const SignOut = styled.div`
   cursor: pointer;
   align-items: center;
   justify-content: center;
+
+  span {
+    font-size: 11px;
+  }
 
   &:hover {
     ${DropDown} {

@@ -18,6 +18,10 @@ const Home = (props) => {
   const userName = useSelector(selectUserName);
 
   useEffect(() => {
+    fetchData();
+  }, [userName]);
+
+  const fetchData = () => {
     let recommend = [];
     let newDisney = [];
     let original = [];
@@ -38,6 +42,7 @@ const Home = (props) => {
             trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
           default:
+            return;
         }
         dispatch(
           setMovies({
@@ -49,7 +54,7 @@ const Home = (props) => {
         );
       });
     });
-  }, [userName]);
+  };
 
   return (
     <Container>
