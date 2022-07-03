@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { useNavigate } from "react-router-dom";
 import { signInWithPopup, signOut } from "firebase/auth";
@@ -33,7 +33,7 @@ const Header = (props) => {
         navigate("/home");
       }
     });
-  }, [userName, navigate]);
+  }, [userName, navigate, dispatch]);
 
   const setLoggedUser = (user) => {
     dispatch(
