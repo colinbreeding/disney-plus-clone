@@ -27,7 +27,17 @@ const Header = (props) => {
       });
     };
     setUserHelper();
-  }, [userName]);
+  }, [userName, useNavigate]);
+
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
+  };
 
   const handleAuth = () => {
     if (!userName) {
@@ -46,16 +56,6 @@ const Header = (props) => {
         })
         .catch((error) => alert(error.message));
     }
-  };
-
-  const setUser = (user) => {
-    dispatch(
-      setUserLoginDetails({
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL,
-      })
-    );
   };
 
   return (

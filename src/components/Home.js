@@ -39,7 +39,6 @@ const Home = (props) => {
               trending = [...trending, { id: doc.id, ...doc.data() }];
               break;
             default:
-              return;
           }
           dispatch(
             setMovies({
@@ -49,12 +48,13 @@ const Home = (props) => {
               trending: trending,
             })
           );
+          return;
         });
         return;
       });
     };
     fetchData();
-  }, [userName]);
+  }, [userName, useDispatch]);
 
   return (
     <Container>
