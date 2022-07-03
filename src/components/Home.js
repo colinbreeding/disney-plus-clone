@@ -24,7 +24,7 @@ const Home = (props) => {
       let original = [];
       let trending = [];
       getDocs(collection(db, "movies")).then((snapshot) => {
-        snapshot.docs.map((doc) => {
+        snapshot.docs.forEach((doc) => {
           switch (doc.data().type) {
             case "recommend":
               recommend = [...recommend, { id: doc.id, ...doc.data() }];
@@ -54,7 +54,7 @@ const Home = (props) => {
       });
     };
     fetchData();
-  }, [userName, useDispatch]);
+  }, [userName, dispatch]);
 
   return (
     <Container>

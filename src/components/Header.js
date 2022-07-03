@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { useNavigate } from "react-router-dom";
 import { signInWithPopup, signOut } from "firebase/auth";
@@ -18,18 +18,24 @@ const Header = (props) => {
   const userPhoto = useSelector(selectUserPhoto);
 
   useEffect(() => {
-    const setUserHelper = () => {
-      auth.onAuthStateChanged(async (user) => {
-        if (user) {
-          setUser(user);
-          navigate("/home");
-        }
-      });
+    const setUser = (user) => {
+      dispatch(
+        setUserLoginDetails({
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+        })
+      );
     };
-    setUserHelper();
-  }, [userName, useNavigate]);
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        navigate("/home");
+      }
+    });
+  }, [userName, navigate]);
 
-  const setUser = (user) => {
+  const setLoggedUser = (user) => {
     dispatch(
       setUserLoginDetails({
         name: user.displayName,
@@ -43,7 +49,7 @@ const Header = (props) => {
     if (!userName) {
       signInWithPopup(auth, provider)
         .then((result) => {
-          setUser(result.user);
+          setLoggedUser(result.user);
         })
         .catch((error) => {
           alert(error.message);
