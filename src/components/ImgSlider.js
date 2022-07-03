@@ -71,6 +71,15 @@ const Carousel = styled(Slider)`
   .slick-next {
     right: -60px;
   }
+
+  @media (min-width: 1900px) {
+    .slick-prev {
+      left: -100px;
+    }
+    .slick-next {
+      right: -100px;
+    }
+  }
 `;
 
 const Wrap = styled.div`
