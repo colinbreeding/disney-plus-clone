@@ -20,12 +20,11 @@ const Header = (props) => {
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         setUser(user);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         navigate("/home");
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userName]);
 
   const setUser = (user) => {
