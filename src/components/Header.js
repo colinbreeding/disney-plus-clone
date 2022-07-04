@@ -18,24 +18,19 @@ const Header = (props) => {
   const userPhoto = useSelector(selectUserPhoto);
 
   useEffect(() => {
-    const setUser = (user) => {
-      dispatch(
-        setUserLoginDetails({
-          name: user.displayName,
-          email: user.email,
-          photo: user.photoURL,
-        })
-      );
-    };
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
-        navigate("/home");
+        navHome();
       }
     });
-  }, [userName, navigate, dispatch]);
+  }, [userName, dispatch]);
 
-  const setLoggedUser = (user) => {
+  const navHome = () => {
+    navigate("/home");
+  };
+
+  const setUser = (user) => {
     dispatch(
       setUserLoginDetails({
         name: user.displayName,
@@ -49,7 +44,7 @@ const Header = (props) => {
     if (!userName) {
       signInWithPopup(auth, provider)
         .then((result) => {
-          setLoggedUser(result.user);
+          setUser(result.user);
         })
         .catch((error) => {
           alert(error.message);
