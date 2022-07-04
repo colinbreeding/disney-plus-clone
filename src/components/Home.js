@@ -18,42 +18,39 @@ const Home = (props) => {
   const userName = useSelector(selectUserName);
 
   useEffect(() => {
-    const fetchData = () => {
-      let recommend = [];
-      let newDisney = [];
-      let original = [];
-      let trending = [];
-      getDocs(collection(db, "movies")).then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          switch (doc.data().type) {
-            case "recommend":
-              recommend = [...recommend, { id: doc.id, ...doc.data() }];
-              break;
-            case "new":
-              newDisney = [...newDisney, { id: doc.id, ...doc.data() }];
-              break;
-            case "original":
-              original = [...original, { id: doc.id, ...doc.data() }];
-              break;
-            case "trending":
-              trending = [...trending, { id: doc.id, ...doc.data() }];
-              break;
-            default:
-          }
-          dispatch(
-            setMovies({
-              recommend: recommend,
-              newDisney: newDisney,
-              original: original,
-              trending: trending,
-            })
-          );
-          return;
-        });
+    let recommend = [];
+    let newDisney = [];
+    let original = [];
+    let trending = [];
+    getDocs(collection(db, "movies")).then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        switch (doc.data().type) {
+          case "recommend":
+            recommend = [...recommend, { id: doc.id, ...doc.data() }];
+            break;
+          case "new":
+            newDisney = [...newDisney, { id: doc.id, ...doc.data() }];
+            break;
+          case "original":
+            original = [...original, { id: doc.id, ...doc.data() }];
+            break;
+          case "trending":
+            trending = [...trending, { id: doc.id, ...doc.data() }];
+            break;
+          default:
+        }
+        dispatch(
+          setMovies({
+            recommend: recommend,
+            newDisney: newDisney,
+            original: original,
+            trending: trending,
+          })
+        );
         return;
       });
-    };
-    fetchData();
+      return;
+    });
   }, [userName, dispatch]);
 
   return (

@@ -20,15 +20,13 @@ const Header = (props) => {
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         setUser(user);
-        navHome();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        navigate("/home");
       }
     });
-  }, [userName, dispatch]);
-
-  const navHome = () => {
-    navigate("/home");
-  };
+  }, [userName]);
 
   const setUser = (user) => {
     dispatch(
