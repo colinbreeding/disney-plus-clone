@@ -9,7 +9,7 @@ const Detail = (props) => {
   const [detailData, setDetailData] = useState({});
 
   useEffect(() => {
-    getDoc(doc(db, "movies", id)).then((doc) => {
+    getDoc(doc(db, "movie", id)).then((doc) => {
       if (doc.exists) {
         setDetailData(doc.data());
       } else {

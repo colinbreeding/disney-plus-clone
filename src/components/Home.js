@@ -22,11 +22,12 @@ const Home = (props) => {
     let newDisney = [];
     let original = [];
     let trending = [];
-    getDocs(collection(db, "movies")).then((snapshot) => {
+    getDocs(collection(db, "movie")).then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         switch (doc.data().type) {
           case "recommend":
             recommend = [...recommend, { id: doc.id, ...doc.data() }];
+            console.log(recommend);
             break;
           case "new":
             newDisney = [...newDisney, { id: doc.id, ...doc.data() }];
