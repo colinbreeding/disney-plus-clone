@@ -27,7 +27,6 @@ const Home = (props) => {
         switch (doc.data().type) {
           case "recommend":
             recommend = [...recommend, { id: doc.id, ...doc.data() }];
-            console.log(recommend);
             break;
           case "new":
             newDisney = [...newDisney, { id: doc.id, ...doc.data() }];

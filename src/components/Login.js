@@ -1,12 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Content>
         <CTA>
           <CTALogoOne src="/images/cta-logo-one.svg" alt="" />
-          <SignUp>GET THE DISNEY BUNDLE</SignUp>
+          <SignUp
+            onClick={() => {
+              navigate("/home");
+            }}
+          >
+            GET THE DISNEY BUNDLE
+          </SignUp>
           <Description>
             <span>Stream Now. </span>
             <span>Terms Apply</span>
